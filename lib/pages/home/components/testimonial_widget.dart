@@ -7,17 +7,16 @@ import 'package:web_portfolio/utils/screen_helper.dart';
 
 final List<Testimonial> testimonials = [
   Testimonial(
-    text:
-        "This is a testimonial text from Janny Stone. Michele is a professional at what he does and never ceases to amaze me with his beautiful works. I will like to work with him in the future again.",
-    occupation: "Product Designer",
-    personName: "JANNY STONE",
+    text: "He has been actively and diligently involved in the projects and tasks assigned to him. He was very impressive in handling the tasks as well as collabrating with the team.",
+    occupation: "Manager- Human Resource",
+    personName: "Ms.Akanksha Jain",
     profilePhoto: "assets/female.png",
   ),
   Testimonial(
     text:
-        "This is a testimonial text from Ken Williams. Michele is a professional at what he does and never ceases to amaze me with his beautiful works. I will like to work with him in the future again.",
-    occupation: "Art Director",
-    personName: "KEN WILLIAMS",
+        "Akshat is a dedicated and skilled developer with ability to pickup new skills very quickly. He never complained of the work assigned to him and completed all taks on time and missed no deadlines. I want to wish him best of luck and it was a pleasure working with such an enthusiastic and dedicated young person. One of the best interns I have trained under me.",
+    occupation: "Tech Lead",
+    personName: "Shivansh Sharma",
     profilePhoto: "assets/male.png",
   )
 ];
@@ -65,18 +64,11 @@ Widget _buildUi(double width) {
                     children: [
                       TextSpan(
                         text:
-                            "This is the portfolio section. There is alot of work here",
+                            "Glad to share feedbacks received from professionals of my past recruiters!",
                         style: TextStyle(color: Colors.white, height: 1.8),
                       ),
                       TextSpan(
-                          text: " click here to contact us",
-                          style: TextStyle(
-                            color: kPrimaryColor,
-                            fontWeight: FontWeight.w700,
-                            height: 1.8,
-                          )),
-                      TextSpan(
-                        text: ". Please subscribe to me youtube channel :-)",
+                        text: ". Please reach me out to know more :-)",
                         style: TextStyle(color: Colors.white, height: 1.8),
                       ),
                     ],

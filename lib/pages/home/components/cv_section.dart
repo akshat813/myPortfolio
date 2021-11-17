@@ -1,39 +1,30 @@
+import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:open_file/open_file.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:web_portfolio/models/design_process.dart';
 import 'package:web_portfolio/utils/constants.dart';
 import 'package:web_portfolio/utils/screen_helper.dart';
+import 'package:dio/dio.dart';
 
 final List<DesignProcess> designProcesses = [
-  DesignProcess(
-    title: "DESIGN",
-    imagePath: "assets/design.png",
-    subtitle:
-        "A full stack allround designer thay may or may not include a guide for specific creative",
-  ),
   DesignProcess(
     title: "DEVELOP",
     imagePath: "assets/develop.png",
     subtitle:
-        "A full stack allround developer thay may or may not include a guide for specific creative",
-  ),
-  DesignProcess(
-    title: "WRITE",
-    imagePath: "assets/write.png",
-    subtitle:
-        "A full stack allround writer thay may or may not include a guide for specific creative",
-  ),
-  DesignProcess(
-    title: "PROMOTE",
-    imagePath: "assets/promote.png",
-    subtitle:
-        "A full stack allround promoter thay may or may not include a guide for specific creative",
+        "A software developer with hands on experience in app development for both android and ios. Also have knowledge of python and java.",
   ),
 ];
 
 class CvSection extends StatelessWidget {
+  var dio = Dio();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -59,7 +50,7 @@ class CvSection extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                "BETTER DESIGN,\nBETTER EXPERIENCES",
+                "BETTER DEVELOPMENT,\nBETTER EXPERIENCES",
                 style: GoogleFonts.oswald(
                   color: Colors.white,
                   fontWeight: FontWeight.w900,
@@ -68,7 +59,24 @@ class CvSection extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () async {
+                  if(Platform.isAndroid)
+                    {
+                      await Permission.storage.request();
+                      if(await Permission.storage.isGranted)
+                        {
+                          Directory dir = await Directory("storage/emulated/0/Download/Portfolio").create(recursive: true);
+                          String path = dir.path;
+                          String fileName = "Portfolio" + DateTime.now().millisecondsSinceEpoch.toString();
+                          print("PATH $path");
+                          Fluttertoast.showToast(msg: "Downloading..");
+                          Response response = await dio.download('https://drive.google.com/uc?export=download&id=1xOExRA4sS9Ow6aoKHDjUVcc0R751702-', '$path/$fileName.pdf',)
+                              .whenComplete((){
+                          OpenFile.open("$path/$fileName.pdf");
+                          Fluttertoast.showToast(msg: "File downloaded!",backgroundColor: Colors.green);});
+                          }
+                  }
+                  },
                 child: MouseRegion(
                   cursor: SystemMouseCursors.click,
                   child: Text(

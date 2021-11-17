@@ -4,6 +4,15 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'package:web_portfolio/pages/home/home.dart';
 import 'package:web_portfolio/utils/constants.dart';
 
+GlobalKey cvKey = GlobalKey();
+GlobalKey iosAppKey = GlobalKey();
+GlobalKey websiteKey = GlobalKey();
+GlobalKey portfolioKey = GlobalKey();
+GlobalKey educationKey = GlobalKey();
+GlobalKey skillsKey = GlobalKey();
+GlobalKey testimonialKey = GlobalKey();
+GlobalKey contactKey = GlobalKey();
+
 void main() {
   runApp(MyApp());
 }
@@ -12,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Flutter Portfolio",
+      title: "Portfolio",
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.dark,
       darkTheme: Theme.of(context).copyWith(

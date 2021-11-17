@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:web_portfolio/main.dart';
 import 'package:web_portfolio/pages/home/components/carousel.dart';
 import 'package:web_portfolio/pages/home/components/cv_section.dart';
 import 'package:web_portfolio/pages/home/components/education_section.dart';
@@ -8,7 +9,6 @@ import 'package:web_portfolio/pages/home/components/header.dart';
 import 'package:web_portfolio/pages/home/components/ios_app_ad.dart';
 import 'package:web_portfolio/pages/home/components/portfolio_stats.dart';
 import 'package:web_portfolio/pages/home/components/skill_section.dart';
-import 'package:web_portfolio/pages/home/components/sponsors.dart';
 import 'package:web_portfolio/pages/home/components/testimonial_widget.dart';
 import 'package:web_portfolio/pages/home/components/website_ad.dart';
 import 'package:web_portfolio/utils/constants.dart';
@@ -81,33 +81,49 @@ class Home extends StatelessWidget {
               SizedBox(
                 height: 20.0,
               ),
-              CvSection(),
-              IosAppAd(),
+              Container(
+                key: cvKey,
+                  child: CvSection()
+              ),
+              Container(
+                  key: iosAppKey,
+                  child: IosAppAd()),
               SizedBox(
                 height: 70.0,
               ),
-              WebsiteAd(),
+              Container(
+                key: websiteKey,
+                  child: WebsiteAd()),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 28.0),
-                child: PortfolioStats(),
+                child: Container(
+                    key: portfolioKey,
+                    child: PortfolioStats()),
               ),
               SizedBox(
                 height: 50.0,
               ),
-              EducationSection(),
+              Container(
+                  key: educationKey,
+                  child: EducationSection()),
               SizedBox(
                 height: 50.0,
               ),
-              SkillSection(),
+              Container(
+                  key: skillsKey,
+                  child: SkillSection()),
               SizedBox(
                 height: 50.0,
               ),
-              Sponsors(),
               SizedBox(
                 height: 50.0,
               ),
-              TestimonialWidget(),
-              Footer(),
+              Container(
+                  key: testimonialKey,
+                  child: TestimonialWidget()),
+              Container(
+                  key: contactKey,
+                  child: Footer()),
             ],
           ),
         ),

@@ -7,24 +7,24 @@ import 'package:web_portfolio/utils/screen_helper.dart';
 
 List<Skill> skills = [
   Skill(
-    skill: "Dart",
-    percentage: 62,
+    skill: "DBMS",
+    percentage: 70,
   ),
   Skill(
-    skill: "Javascript",
+    skill: "Flutter & Dart",
     percentage: 80,
   ),
   Skill(
-    skill: "PHP",
-    percentage: 78,
-  ),
-  Skill(
     skill: "Python",
-    percentage: 90,
+    percentage: 50,
   ),
   Skill(
-    skill: "GoLang",
-    percentage: 40,
+    skill: "Java",
+    percentage: 70,
+  ),
+  Skill(
+    skill: "Basic NoSql",
+    percentage: 35,
   ),
 ];
 
@@ -81,7 +81,7 @@ class SkillSection extends StatelessWidget {
                         height: 10.0,
                       ),
                       Text(
-                        "This is all the skills listed below more will be added in due time. This is all the skills listed below more will be added in due time.",
+                        "My technical proficiencies are as below. Believe that these will get expanded with due time.",
                         style: TextStyle(
                           color: kCaptionColor,
                           height: 1.5,
@@ -121,13 +121,13 @@ class SkillSection extends StatelessWidget {
                                     SizedBox(
                                       width: 10.0,
                                     ),
-                                    Text(
-                                      "${skill.percentage}%",
-                                      style: TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 16.0,
-                                      ),
-                                    )
+                                    // Text(
+                                    //   "${skill.percentage}%",
+                                    //   style: TextStyle(
+                                    //     color: Colors.white,
+                                    //     fontSize: 16.0,
+                                    //   ),
+                                    // )
                                   ],
                                 ),
                               ),

@@ -3,24 +3,40 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:web_portfolio/models/header_item.dart';
 import 'package:web_portfolio/utils/constants.dart';
 import 'package:web_portfolio/utils/globals.dart';
 import 'package:web_portfolio/utils/screen_helper.dart';
+import 'package:web_portfolio/main.dart';
 
 List<HeaderItem> headerItems = [
-  HeaderItem(
-    title: "HOME",
-    onTap: () {},
-  ),
-  HeaderItem(title: "MY INTRO", onTap: () {}),
-  HeaderItem(title: "SERVICES", onTap: () {}),
-  HeaderItem(title: "PORTFOLIO", onTap: () {}),
-  HeaderItem(title: "TESTIMONIALS", onTap: () {}),
-  HeaderItem(title: "BLOGS", onTap: () {}),
-  HeaderItem(
-    title: "HIRE ME",
-    onTap: () {},
+  HeaderItem(title: "HOME", onTap: () {
+      Scrollable.ensureVisible(cvKey.currentContext);
+    }),
+  HeaderItem(title: "TECHNICAL SKILLS", onTap: () {
+    Scrollable.ensureVisible(skillsKey.currentContext);
+  }),
+  HeaderItem(title: "EDUCATION", onTap: () {
+    Scrollable.ensureVisible(educationKey.currentContext);
+  }),
+  HeaderItem(title: "TESTIMONIALS", onTap: () {
+    Scrollable.ensureVisible(testimonialKey.currentContext);
+  }),
+  HeaderItem(title: "CONTACT", onTap: () {
+    Scrollable.ensureVisible(contactKey.currentContext);
+  }),
+  HeaderItem(title: "HIRE ME",
+    onTap: () async {
+      print("Sending interest");
+      await launch('mailto:akshatofc.1399@gmail.com?subject=Interested in hiring Title&body=Hey, \nJust saw your wonderful portfolio and interested to hire you. Reply back to this email for further communication!\nThanks.');
+      // Email email = Email(
+      //   to: ["akshatofc.1399@gmail.com"],
+      //   subject: "Hiring Interest",
+      //   body: "Hey,\nJust saw your wonderful portfolio and interested to hire you.\nThanks."
+      // );
+      // await EmailLauncher.launch(email);
+    },
     isButton: true,
   ),
 ];
@@ -37,7 +53,7 @@ class HeaderLogo extends StatelessWidget {
             text: TextSpan(
               children: [
                 TextSpan(
-                  text: "M",
+                  text: "A.G",
                   style: GoogleFonts.oswald(
                     color: Colors.white,
                     fontSize: 32.0,

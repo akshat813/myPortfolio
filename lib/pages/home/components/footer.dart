@@ -10,26 +10,26 @@ final List<FooterItem> footerItems = [
   FooterItem(
     iconPath: "assets/mappin.png",
     title: "ADDRESS",
-    text1: "999 Carter Street",
-    text2: "Sailor Springs, IL 64234",
+    text1: "Indirapuram, Ghaziabad-201010",
+    text2: "India"
   ),
   FooterItem(
     iconPath: "assets/phone.png",
     title: "PHONE",
-    text1: "+1 618-689-9604",
-    text2: "+1 781-689-9632",
+    text1: "+91 7417553537",
+    text2: ""
   ),
   FooterItem(
     iconPath: "assets/email.png",
     title: "EMAIL",
-    text1: "hello@example.com",
-    text2: "info@flutterpanda.com",
+    text1: "akshatofc.1399@gmail.com",
+    text2: ""
   ),
   FooterItem(
     iconPath: "assets/whatsapp.png",
     title: "WHATSAPP",
-    text1: "+234 901-134-0095",
-    text2: "+234 901-134-0095",
+    text1: "+91 8077099542",
+      text2: ""
   )
 ];
 
@@ -55,17 +55,17 @@ Widget _buildUi(double width, BuildContext context) {
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 50.0),
                 child: Wrap(
-                  spacing: 20.0,
+                  spacing: 40.0,
                   runSpacing: 20.0,
                   children: footerItems
                       .map(
                         (footerItem) => Container(
-                          height: 120.0,
+                          height: 140.0,
                           width: ScreenHelper.isMobile(context)
                               ? constraints.maxWidth / 2.0 - 20.0
                               : constraints.maxWidth / 4.0 - 20.0,
@@ -108,7 +108,7 @@ Widget _buildUi(double width, BuildContext context) {
                                         ),
                                       ),
                                       TextSpan(
-                                        text: "${footerItem.text2}\n",
+                                        text: footerItem.text2!=null || footerItem.text2!="" ?"${footerItem.text2}\n" : "",
                                         style: TextStyle(
                                           color: kCaptionColor,
                                         ),
@@ -124,66 +124,66 @@ Widget _buildUi(double width, BuildContext context) {
                       .toList(),
                 ),
               ),
-              SizedBox(
-                height: 20.0,
-              ),
-              Flex(
-                direction: ScreenHelper.isMobile(context)
-                    ? Axis.vertical
-                    : Axis.horizontal,
-                mainAxisAlignment: ScreenHelper.isMobile(context)
-                    ? MainAxisAlignment.center
-                    : MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(bottom: 8.0),
-                    child: Text(
-                      "Copyright (c) 2021 Michele Harrington. All rights Reserved",
-                      style: TextStyle(
-                        color: kCaptionColor,
-                      ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      GestureDetector(
-                        onTap: () {},
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: Text(
-                            "Privacy Policy",
-                            style: TextStyle(
-                              color: kCaptionColor,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          "|",
-                          style: TextStyle(
-                            color: kCaptionColor,
-                          ),
-                        ),
-                      ),
-                      GestureDetector(
-                        onTap: () {},
-                        child: MouseRegion(
-                          cursor: SystemMouseCursors.click,
-                          child: Text(
-                            "Terms & Conditions",
-                            style: TextStyle(
-                              color: kCaptionColor,
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  )
-                ],
-              )
+              // SizedBox(
+              //   height: 20.0,
+              // ),
+              // Flex(
+              //   direction: ScreenHelper.isMobile(context)
+              //       ? Axis.vertical
+              //       : Axis.horizontal,
+              //   mainAxisAlignment: ScreenHelper.isMobile(context)
+              //       ? MainAxisAlignment.center
+              //       : MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Padding(
+              //       padding: EdgeInsets.only(bottom: 8.0),
+              //       child: Text(
+              //         "Copyright (c) 2021 Michele Harrington. All rights Reserved",
+              //         style: TextStyle(
+              //           color: kCaptionColor,
+              //         ),
+              //       ),
+              //     ),
+              //     Row(
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       children: [
+              //         GestureDetector(
+              //           onTap: () {},
+              //           child: MouseRegion(
+              //             cursor: SystemMouseCursors.click,
+              //             child: Text(
+              //               "Privacy Policy",
+              //               style: TextStyle(
+              //                 color: kCaptionColor,
+              //               ),
+              //             ),
+              //           ),
+              //         ),
+              //         Container(
+              //           padding: EdgeInsets.symmetric(horizontal: 8.0),
+              //           child: Text(
+              //             "|",
+              //             style: TextStyle(
+              //               color: kCaptionColor,
+              //             ),
+              //           ),
+              //         ),
+              //         GestureDetector(
+              //           onTap: () {},
+              //           child: MouseRegion(
+              //             cursor: SystemMouseCursors.click,
+              //             child: Text(
+              //               "Terms & Conditions",
+              //               style: TextStyle(
+              //                 color: kCaptionColor,
+              //               ),
+              //             ),
+              //           ),
+              //         )
+              //       ],
+              //     )
+              //   ],
+              // )
             ],
           );
         },

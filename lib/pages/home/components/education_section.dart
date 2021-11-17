@@ -9,27 +9,21 @@ import 'package:web_portfolio/utils/screen_helper.dart';
 final List<Education> educationList = [
   Education(
     description:
-        "This is a sample education and details about it is stated below. This is a sample education and details about it is stated below",
-    linkName: "www.flutterpanda.com",
-    period: "2019 - PRESENT",
+        "B.Tech in CSE with an aggregate of 79.76% (8.06cgpa).",
+    linkName: "Abes Engineering College(AKTU),Ghaziabad",
+    period: "2017 - 2021",
   ),
   Education(
     description:
-        "This is a sample education and details about it is stated below.This is a sample education and details about it is stated below",
-    linkName: "www.flutterpanda.com",
-    period: "2018 - 2019",
+        "12th with PCM and computers. Aggregate percentage 88.2%.",
+    linkName: "CL Gupta World School,Moradabad",
+    period: "2015 - 2017",
   ),
   Education(
     description:
-        "This is a sample education and details about it is stated below. This is a sample education and details about it is stated below",
-    linkName: "www.flutterpanda.com",
-    period: "2017 - 2018",
-  ),
-  Education(
-    description:
-        "This is a sample education and details about it is stated below. This is a sample education and details about it is stated below",
-    linkName: "www.flutterpanda.com",
-    period: "2016 - 2017",
+        "10th with 9.6 cgpa.",
+    linkName: "St.Mary's Secondary School,Sambhal",
+    period: "2014 - 2015",
   ),
 ];
 
@@ -72,7 +66,7 @@ class EducationSection extends StatelessWidget {
                 Container(
                   constraints: BoxConstraints(maxWidth: 400.0),
                   child: Text(
-                    "A full stack all round developer that does all the job he needs to do at all times. Actually this is a false statement",
+                    "Read here to find out my qualification and education details.",
                     style: TextStyle(
                       color: Colors.white,
                       height: 1.5,
@@ -88,7 +82,7 @@ class EducationSection extends StatelessWidget {
               builder: (context, constraints) {
                 return Container(
                   child: Wrap(
-                    spacing: 20.0,
+                    spacing: 40.0,
                     runSpacing: 20.0,
                     children: educationList
                         .map(
@@ -129,7 +123,7 @@ class EducationSection extends StatelessWidget {
                                       style: TextStyle(
                                         color: Colors.white,
                                       ),
-                                    ),
+                                    )
                                   ),
                                 ),
                                 SizedBox(
