@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -12,6 +13,9 @@ import 'package:web_portfolio/models/design_process.dart';
 import 'package:web_portfolio/utils/constants.dart';
 import 'package:web_portfolio/utils/screen_helper.dart';
 import 'package:dio/dio.dart';
+import 'dart:html' as html;
+import 'package:web_portfolio/main.dart';
+
 
 final List<DesignProcess> designProcesses = [
   DesignProcess(
@@ -24,6 +28,7 @@ final List<DesignProcess> designProcesses = [
 
 class CvSection extends StatelessWidget {
   var dio = Dio();
+
 
   @override
   Widget build(BuildContext context) {
@@ -60,21 +65,41 @@ class CvSection extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () async {
-                  if(Platform.isAndroid)
+                  if(kIsWeb)
+                  {
+                    Fluttertoast.showToast(msg: "Downloading..",backgroundColor: Colors.green);
+                    print("IS WEB");
+                    html.AnchorElement anchorElement =  new html.AnchorElement(href: 'https://drive.google.com/uc?export=download&id=1xOExRA4sS9Ow6aoKHDjUVcc0R751702-');
+                    anchorElement.download = 'https://drive.google.com/uc?export=download&id=1xOExRA4sS9Ow6aoKHDjUVcc0R751702-';
+                    anchorElement.click();
+                  }
+
+                  else
+                  {
+                    if (Platform.isAndroid)
                     {
                       await Permission.storage.request();
-                      if(await Permission.storage.isGranted)
-                        {
-                          Directory dir = await Directory("storage/emulated/0/Download/Portfolio").create(recursive: true);
-                          String path = dir.path;
-                          String fileName = "Portfolio" + DateTime.now().millisecondsSinceEpoch.toString();
-                          print("PATH $path");
-                          Fluttertoast.showToast(msg: "Downloading..");
-                          Response response = await dio.download('https://drive.google.com/uc?export=download&id=1xOExRA4sS9Ow6aoKHDjUVcc0R751702-', '$path/$fileName.pdf',)
-                              .whenComplete((){
+                      if (await Permission.storage.isGranted) {
+                        Directory dir = await Directory(
+                            "storage/emulated/0/Download/Portfolio").create(
+                            recursive: true);
+                        String path = dir.path;
+                        String fileName = "Portfolio" + DateTime
+                            .now()
+                            .millisecondsSinceEpoch
+                            .toString();
+                        print("PATH $path");
+                        Fluttertoast.showToast(msg: "Downloading..");
+                        Response response = await dio.download(
+                          'https://drive.google.com/uc?export=download&id=1xOExRA4sS9Ow6aoKHDjUVcc0R751702-',
+                          '$path/$fileName.pdf',)
+                            .whenComplete(() {
                           OpenFile.open("$path/$fileName.pdf");
-                          Fluttertoast.showToast(msg: "File downloaded!",backgroundColor: Colors.green);});
-                          }
+                          Fluttertoast.showToast(msg: "File downloaded!",
+                              backgroundColor: Colors.green);
+                        });
+                      }
+                    }
                   }
                   },
                 child: MouseRegion(
