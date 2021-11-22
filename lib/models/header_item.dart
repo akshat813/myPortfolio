@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class HeaderItem {
   final String title;
-  final VoidCallback onTap;
+  final  onTap;
   final bool isButton;
+  BuildContext context;
 
   HeaderItem({
     this.title,

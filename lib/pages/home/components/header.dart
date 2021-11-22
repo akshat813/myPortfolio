@@ -11,10 +11,12 @@ import 'package:web_portfolio/utils/screen_helper.dart';
 import 'package:web_portfolio/main.dart';
 
 List<HeaderItem> headerItems = [
-  HeaderItem(title: "HOME", onTap: () {
+  HeaderItem(title: "HOME",  onTap: () {
+    print("ON TAP HOME");
       Scrollable.ensureVisible(cvKey.currentContext);
     }),
   HeaderItem(title: "TECHNICAL SKILLS", onTap: () {
+    print("ON TAP SKILLS");
     Scrollable.ensureVisible(skillsKey.currentContext);
   }),
   HeaderItem(title: "EDUCATION", onTap: () {

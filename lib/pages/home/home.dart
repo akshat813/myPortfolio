@@ -38,7 +38,13 @@ class Home extends StatelessWidget {
                           ),
                           padding: EdgeInsets.symmetric(horizontal: 28.0),
                           child: TextButton(
-                            onPressed: headerItems[index].onTap,
+                            onPressed: (){
+                              if(Globals.scaffoldKey.currentState.isDrawerOpen)
+                              {
+                                Navigator.maybePop(context);
+                              }
+                                return headerItems[index].onTap;
+                            },
                             child: Text(
                               headerItems[index].title,
                               style: TextStyle(
@@ -57,6 +63,28 @@ class Home extends StatelessWidget {
                             color: Colors.white,
                           ),
                         ),
+                  onTap: () async {
+                    print("IN TAP");
+                    if(Globals.scaffoldKey.currentState.isEndDrawerOpen)
+                    {
+                      print("DRAWER OPEN");
+                      await Navigator.maybePop(context);
+                    }
+                    String title = headerItems[index].title;
+                    switch(title)
+                    {
+                      case 'HOME' : Scrollable.ensureVisible(cvKey.currentContext);
+                      break;
+                      case 'TECHNICAL SKILLS' : Scrollable.ensureVisible(skillsKey.currentContext);
+                      break;
+                      case 'EDUCATION' : Scrollable.ensureVisible(educationKey.currentContext);
+                      break;
+                      case 'TESTIMONIALS' : Scrollable.ensureVisible(testimonialKey.currentContext);
+                      break;
+                      case 'CONTACT' : Scrollable.ensureVisible(contactKey.currentContext);
+                      break;
+                    }
+                  },
                       );
               },
               separatorBuilder: (BuildContext context, int index) {
